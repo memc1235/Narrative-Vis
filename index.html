@@ -22,11 +22,13 @@ async function init() {
 
   d3.select('svg')
     .append('g')
-    .selectAll('path')
+    .selectAll('circle')
     .data(data_male)
     .enter()
-    .append('path')
-    .attr('d', d3.line().x(function(d,i) { return x(i) }).y(function(d) { return y(d.ALE) }))
+    .append('circle')
+    .attr('cx', function(d,i) { return x(i); })
+    .attr('cy', function(d) {return y(d.ALE); })
+    .attr('r', 2);
 }
 </script>
 </body>
