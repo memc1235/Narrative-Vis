@@ -13,22 +13,26 @@ async function init() {
   const data_male = await d3.csv('A_life_m.csv');
   const data_female = await d3.csv('A_life_f.csv');
   //console.log(data_male);
-  //const me = data_male.map(d => +d.ALE);
+  var me = data_male.map(d => +d.ALE);
+  var ind = data_male.map(d => (+d.Year - 1900));
   //console.log(me);
   //const mf = data_female.map(d => +d.ALE);
 
-  var x = d3.scaleLinear().domain([0,119]).range([0,300]);
+  var x = d3.scaleLinear().domain([1900,2018]).range([0,300]);
   var y = d3.scaleLinear().domain([45,82]).range([300,0]);
 
   d3.select('svg')
     .append('g')
-    .selectAll('circle')
+    .selectAll('path')
     .data(data_male)
     .enter()
-    .append('circle')
-    .attr('cx', function(d,i) { return x(i); })
-    .attr('cy', function(d) {return y(d.ALE); })
-    .attr('r', 2);
+    .append('path')
+    .attr('fill', 'none')
+    .attr('stroke', 'steelblue')
+    .attr('stroke-width', 2)
+    .attr('d', d3.line()
+      .x(function(d) {return x(d.Year)})
+      .y(function(d) {return y(d.ALE)}));
 }
 </script>
 </body>
