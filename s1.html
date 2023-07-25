@@ -1,0 +1,49 @@
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> circle {fill: lightblue; stroke: black;} </style>
+<style> button {font: bold 14px Arial;} </style>
+<header>
+  <h1>Slide 1</h1>
+</header>
+<body onload='init()'>
+<svg width=300 height=300>
+</svg>
+<script>
+async function init() {
+  const data_male = await d3.csv('A_life_m.csv');
+  const data_female = await d3.csv('A_life_f.csv');
+  //console.log(data_male);
+  var me = data_male.map(d => +d.ALE);
+  var ind = data_male.map(d => (+d.Year));
+  //console.log(me);
+  //const mf = data_female.map(d => +d.ALE);
+
+  var x = d3.scaleLinear().domain([1900,2018]).range([0,300]);
+  var y = d3.scaleLinear().domain([45,82]).range([300,0]);
+  var Gen = d3.line();
+  var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
+  console.log(points);
+
+  var pathOfLine = Gen(points);
+
+  d3.select('svg')
+    .append('g')
+    .selectAll('path')
+    .data(data_male)
+    .enter()
+    .append('path')
+    .attr('fill', 'none')
+    .attr('stroke', 'steelblue')
+    .attr('stroke-width', 2)
+    .attr('d', pathOfLine);
+}
+</script>
+</body>
+<footer>
+  <table>
+    <td><a href='index.html'><button>1</button></a></td>
+    <td><a href='s2.html'><button>2</button></a></td>
+    <td><a href='s3.html'><button>3</button></a></td>
+  </table>
+</footer>
+</html>
