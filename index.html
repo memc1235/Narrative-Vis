@@ -13,6 +13,9 @@ async function init() {
   const data_m = await d3.csv('A_life_m.csv');
   const data_f = await d3.csv('A_life_f.csv');
   console.log(data_m);
+  const me = data_m.map(d => +d.ALE);
+  console.log(me);
+  const mf = data_f.map(d => +d.ALE);
 }
 </script>
 </body>
