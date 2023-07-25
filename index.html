@@ -10,9 +10,8 @@
 </svg>
 <script>
 async function init() {
-  d3.csv("NCHS_Life_Expectancy.csv", (d) => {
-            console.log(d)
-        })
+  const data_m = await d3.csv('A_life_m.csv');
+  const data_f = await d3.csv('A_life_f.csv');
 }
 </script>
 </body>
