@@ -14,12 +14,22 @@ async function init() {
   const data_female = await d3.csv('A_life_f.csv');
   //console.log(data_male);
   var me = data_male.map(d => +d.ALE);
-  var ind = data_male.map(d => (+d.Year - 1900));
+  var ind = data_male.map(d => (+d.Year));
   //console.log(me);
   //const mf = data_female.map(d => +d.ALE);
 
   var x = d3.scaleLinear().domain([1900,2018]).range([0,300]);
   var y = d3.scaleLinear().domain([45,82]).range([300,0]);
+
+  var points = [
+            [0, 100],
+            [500, 100],
+            [200, 200],
+            [500, 200]
+
+        ];
+
+  var pathOfLine = Gen(points);
 
   d3.select('svg')
     .append('g')
@@ -30,9 +40,7 @@ async function init() {
     .attr('fill', 'none')
     .attr('stroke', 'steelblue')
     .attr('stroke-width', 2)
-    .attr('d', d3.line()
-      .x(function(d) {return x(d.Year)})
-      .y(function(d) {return y(d.ALE)}));
+    .attr('d', pathOfLine);
 }
 </script>
 </body>
