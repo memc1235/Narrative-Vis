@@ -21,7 +21,7 @@ async function init() {
   var x = d3.scaleLinear().domain([1900,2018]).range([0,300]);
   var y = d3.scaleLinear().domain([45,82]).range([300,0]);
   var Gen = d3.line();
-  var points = ind.map(function(d,i) { return [x(d),y(me(i))]; });
+  var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
   console.log(points);
 
   var pathOfLine = Gen(points);
