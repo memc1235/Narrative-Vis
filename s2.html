@@ -54,12 +54,12 @@ async function init() {
 
     d3.select('svg')
       .append('g')
-      .attr('transform','translate(20,20)')
+      .attr('transform','translate(40,20)')
       .call(d3.axisLeft(y));
 
     d3.select('svg')
       .append('g')
-      .attr('transform','translate(0,420)')
+      .attr('transform','translate(20,420)')
       .call(d3.axisBottom(x).tickFormat(d3.format('d')));
 }
 </script>
