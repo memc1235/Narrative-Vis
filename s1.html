@@ -23,9 +23,9 @@ async function init() {
   var y = d3.scaleLinear().domain([35,82]).range([400,20]);
   var Gen = d3.line();
   var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
-  console.log(points);
-  var points_f = ind.map(function(d,i) { return [x(d),y(mf[i])]; });
 
+  var points_f = ind.map(function(d,i) { return [x(d),y(mf[i])]; });
+  console.log(points_f);
   var pathOfLine = Gen(points);
   var path_f = Gen(points_f);
 
@@ -47,7 +47,7 @@ async function init() {
       .enter()
       .append('path')
       .attr('fill', 'none')
-      .attr('stroke', 'violetred')
+      .attr('stroke', 'red')
       .attr('stroke-width', 1)
       .attr('d', path_f);
 }
