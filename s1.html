@@ -6,7 +6,7 @@
   <h1>Slide 1</h1>
 </header>
 <body onload='init()'>
-<svg width=300 height=300>
+<svg width=400 height=400>
 </svg>
 <script>
 async function init() {
@@ -15,16 +15,19 @@ async function init() {
   //console.log(data_male);
   var me = data_male.map(d => +d.ALE);
   var ind = data_male.map(d => (+d.Year));
+  var mf = data_female.map(d => +d.ALE);
   //console.log(me);
   //const mf = data_female.map(d => +d.ALE);
 
-  var x = d3.scaleLinear().domain([1900,2018]).range([0,300]);
-  var y = d3.scaleLinear().domain([45,82]).range([300,0]);
+  var x = d3.scaleLinear().domain([1900,2018]).range([20,400]);
+  var y = d3.scaleLinear().domain([35,82]).range([400,20]);
   var Gen = d3.line();
   var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
   console.log(points);
+  var points_f = ind.map(function(d,i) { return [x(d),y(mf[i])]; });
 
   var pathOfLine = Gen(points);
+  var path_f = Gen(points_f);
 
   d3.select('svg')
     .append('g')
@@ -34,14 +37,25 @@ async function init() {
     .append('path')
     .attr('fill', 'none')
     .attr('stroke', 'steelblue')
-    .attr('stroke-width', 2)
+    .attr('stroke-width', 1)
     .attr('d', pathOfLine);
+
+    d3.select('svg')
+      .append('g')
+      .selectAll('path')
+      .data(data_female)
+      .enter()
+      .append('path')
+      .attr('fill', 'none')
+      .attr('stroke', 'violetred')
+      .attr('stroke-width', 1)
+      .attr('d', path_f);
 }
 </script>
 </body>
 <footer>
   <table>
-    <td><a href='index.html'><button>1</button></a></td>
+    <td><a href='s1.html'><button>1</button></a></td>
     <td><a href='s2.html'><button>2</button></a></td>
     <td><a href='s3.html'><button>3</button></a></td>
   </table>
