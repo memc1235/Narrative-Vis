@@ -6,7 +6,7 @@
   <h1>Slide 1</h1>
 </header>
 <body onload='init()'>
-<svg width=400 height=400>
+<svg width=450 height=450>
 </svg>
 <script>
 async function init() {
@@ -58,8 +58,9 @@ async function init() {
 
     d3.select('svg')
       .append('g')
-      .attr('transform','translate(20,20)')
-      .call(d3.axisBottom(x));
+      .attr('transform','translate(20,420)')
+      .call(d3.axisBottom(x))
+      .tickFormat(d3.format('d'));
 }
 </script>
 </body>
