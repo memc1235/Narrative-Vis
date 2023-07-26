@@ -5,17 +5,68 @@
   <h1>Slide 2</h1>
 </header>
 <body onload='init()'>
-<svg width=300 height=300>
+<svg width=450 height=450>
 </svg>
 <script>
 async function init() {
+  const data_male = await d3.csv('B_life_m.csv');
+  const data_female = await d3.csv('B_life_f.csv');
+  //console.log(data_male);
+  var me = data_male.map(d => +d.ALE);
+  var ind = data_male.map(d => (+d.Year));
+  var mf = data_female.map(d => +d.ALE);
+  //console.log(me);
+  //const mf = data_female.map(d => +d.ALE);
 
+  var x = d3.scaleLinear().domain([1900,2017]).range([20,400]);
+  var y = d3.scaleLinear().domain([35,82]).range([400,20]);
+  var Gen = d3.line();
+  var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
+
+  var points_f = ind.map(function(d,i) { return [x(d),y(mf[i])]; });
+
+  var pathOfLine = Gen(points);
+  var path_f = Gen(points_f);
+
+  d3.select('svg')
+    .append('g')
+    .selectAll('path')
+    .data(data_male)
+    .enter()
+    .append('path')
+    .attr('fill', 'none')
+    .attr('stroke', 'steelblue')
+    .attr('stroke-width', 1)
+    .attr('d', pathOfLine);
+
+    d3.select('svg')
+      .append('g')
+      .selectAll('path')
+      .data(data_female)
+      .enter()
+      .append('path')
+      .attr('fill', 'none')
+      .attr('stroke', 'red')
+      .attr('stroke-width', 1)
+      .attr('d', path_f);
+
+    d3.select('svg')
+      .append('g')
+      .attr('transform','translate(20,20)')
+      .call(d3.axisLeft(y));
+
+    d3.select('svg')
+      .append('g')
+      .attr('transform','translate(0,420)')
+      .call(d3.axisBottom(x).tickFormat(d3.format('d')));
 }
 </script>
 </body>
 <footer>
-  <a href="s1.html">1</a>
-  <a href="s2.html">2</a>
-  <a href="s3.html">3</a>
+  <table>
+    <td><a href='s1.html'><button>1</button></a></td>
+    <td><a href='s2.html'><button>2</button></a></td>
+    <td><a href='s3.html'><button>3</button></a></td>
+  </table>
 </footer>
 </html>
