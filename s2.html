@@ -5,7 +5,7 @@
   <h1>Average Lifespan: Black Men and Women</h1>
 </header>
 <body onload='init()'>
-<svg width=450 height=450>
+<svg width=550 height=450>
 </svg>
 <script>
 async function init() {
@@ -61,6 +61,13 @@ async function init() {
       .append('g')
       .attr('transform','translate(20,420)')
       .call(d3.axisBottom(x).tickFormat(d3.format('d')));
+
+      var svg = d3.select('svg');
+
+      svg.append("circle").attr("cx",440).attr("cy",300).attr("r", 6).style("fill", "midnightblue")
+      svg.append("circle").attr("cx",440).attr("cy",330).attr("r", 6).style("fill", "orchid")
+      svg.append("text").attr("x", 460).attr("y", 300).text("Men").style("font-size", "15px").attr("alignment-baseline","middle")
+      svg.append("text").attr("x", 460).attr("y", 330).text("Women").style("font-size", "15px").attr("alignment-baseline","middle")
 }
 </script>
 </body>
