@@ -1,5 +1,6 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
+<script src='d3-annotation.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <style> button {font: bold 14px Arial;} </style>
 <header>
@@ -20,7 +21,7 @@ async function init() {
   //const mf = data_female.map(d => +d.ALE);
 
   var x = d3.scaleLinear().domain([1900,2017]).range([20,400]);
-  var y = d3.scaleLinear().domain([35,82]).range([400,20]);
+  var y = d3.scaleLinear().domain([29,82]).range([400,20]);
   var Gen = d3.line();
   var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
 
@@ -62,6 +63,13 @@ async function init() {
       .append('g')
       .attr('transform','translate(20,420)')
       .call(d3.axisBottom(x).tickFormat(d3.format('d')));
+
+      var svg = d3.select('svg');
+
+      svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "#69b3a2")
+      svg.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#404080")
+      svg.append("text").attr("x", 220).attr("y", 130).text("variable A").style("font-size", "15px").attr("alignment-baseline","middle")
+      svg.append("text").attr("x", 220).attr("y", 160).text("variable B").style("font-size", "15px").attr("alignment-baseline","middle")
 }
 </script>
 </body>
