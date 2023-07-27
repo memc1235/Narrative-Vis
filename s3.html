@@ -69,54 +69,8 @@ async function init() {
       svg.append("text").attr("x", 460).attr("y", 300).text("Men").style("font-size", "15px").attr("alignment-baseline","middle")
       svg.append("text").attr("x", 460).attr("y", 330).text("Women").style("font-size", "15px").attr("alignment-baseline","middle")
 
-
-  function update() {
-    const data_male = await d3.csv('B_life_m.csv');
-    const data_female = await d3.csv('B_life_f.csv');
-    //console.log(data_male);
-    var me = data_male.map(d => +d.ALE);
-    var ind = data_male.map(d => (+d.Year));
-    var mf = data_female.map(d => +d.ALE);
-    //console.log(me);
-    //const mf = data_female.map(d => +d.ALE);
-
-    var x = d3.scaleLinear().domain([1900,2017]).range([20,400]);
-    var y = d3.scaleLinear().domain([29,82]).range([400,20]);
-    var Gen = d3.line();
-    var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
-
-    var points_f = ind.map(function(d,i) { return [x(d),y(mf[i])]; });
-
-    var pathOfLine = Gen(points);
-    var path_f = Gen(points_f);
-
-    d3.select('svg')
-      .append('g')
-      .attr('transform', 'translate(20,20)')
-      .selectAll('path')
-      .data(data_male)
-      .enter()
-      .append('path')
-      .attr('fill', 'none')
-      .attr('stroke', 'midnightblue')
-      .attr('stroke-width', 1)
-      .attr('d', pathOfLine);
-
-      d3.select('svg')
-        .append('g')
-        .attr('transform', 'translate(20,20)')
-        .selectAll('path')
-        .data(data_female)
-        .enter()
-        .append('path')
-        .attr('fill', 'none')
-        .attr('stroke', 'orchid')
-        .attr('stroke-width', 1)
-        .attr('d', path_f);
-  }
 }
 </script>
-<button onClick='update();'>Update</button>
 </body>
 <footer>
   <table>
