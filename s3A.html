@@ -38,7 +38,7 @@ async function init() {
   var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
 
   var points_f = ind.map(function(d,i) { return [x(d),y(mf[i])]; });
-  console.log(points_f);
+  
   var pathOfLine = Gen(points);
   var path_f = Gen(points_f);
 
