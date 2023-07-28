@@ -25,6 +25,13 @@ async function init() {
   //console.log(me);
   //const mf = data_female.map(d => +d.ALE);
 
+  const data_male_w = await d3.csv('W_life_m.csv');
+  const data_female_w = await d3.csv('W_life_f.csv');
+  //console.log(data_male);
+  var me_w = data_male_w.map(d => +d.ALE);
+  var mf_w = data_female_w.map(d => +d.ALE);
+  //console.log(me);
+
   var x = d3.scaleLinear().domain([1900,2017]).range([20,400]);
   var y = d3.scaleLinear().domain([29,82]).range([400,20]);
   var Gen = d3.line();
@@ -41,6 +48,13 @@ async function init() {
 
   var pathOfLine_b = Gen(points_b);
   var path_f_b = Gen(points_f_b);
+
+  var points_w = ind.map(function(d,i) { return [x(d),y(me_w[i])]; });
+
+  var points_f_w = ind.map(function(d,i) { return [x(d),y(mf_w[i])]; });
+
+  var pathOfLine_w = Gen(points_w);
+  var path_f_w = Gen(points_f_w);
 
   d3.select('svg')
     .append('g')
@@ -90,6 +104,29 @@ async function init() {
           .attr('stroke-width', 1)
           .attr('d', path_f_b);
 
+                d3.select('svg')
+                  .append('g')
+                  .attr('transform', 'translate(20,20)')
+                  .selectAll('path')
+                  .data(data_male_w)
+                  .enter()
+                  .append('path')
+                  .attr('fill', 'none')
+                  .attr('stroke', 'darkgreen')
+                  .attr('stroke-width', 1)
+                  .attr('d', pathOfLine_w);
+
+                  d3.select('svg')
+                    .append('g')
+                    .attr('transform', 'translate(20,20)')
+                    .selectAll('path')
+                    .data(data_female_w)
+                    .enter()
+                    .append('path')
+                    .attr('fill', 'none')
+                    .attr('stroke', 'darkmagenta')
+                    .attr('stroke-width', 1)
+                    .attr('d', path_f_w);
     d3.select('svg')
       .append('g')
       .attr('transform','translate(40,20)')
@@ -110,8 +147,9 @@ async function init() {
 }
 </script>
 <div>
-  <a href="s3.html"><button>Hide Black Data</button></a>
-  <a href="s3A.html"><button>Show White Data</button></a>
+  <a href="s3b.html"><button>Hide White Data</button></a>
+  <a href="s3w.html"><button>Hide Black Data</button></a>
+  <a href="s3.html"><button>Hide Both</button></a>
 </div>
 </body>
 <footer>
