@@ -17,11 +17,11 @@ async function init() {
   var ind = data_male.map(d => (+d.Year));
   var mf = data_female.map(d => +d.ALE);
 
-  const data_male_w = await d3.csv('W_life_m.csv');
-  const data_female_w = await d3.csv('W_life_f.csv');
+  const data_male_b = await d3.csv('B_life_m.csv');
+  const data_female_b = await d3.csv('B_life_f.csv');
   //console.log(data_male);
-  var me_w = data_male_w.map(d => +d.ALE);
-  var mf_w = data_female_w.map(d => +d.ALE);
+  var me_b = data_male_w.map(d => +d.ALE);
+  var mf_b = data_female_w.map(d => +d.ALE);
   //console.log(me);
   //const mf = data_female.map(d => +d.ALE);
 
@@ -35,12 +35,12 @@ async function init() {
   var pathOfLine = Gen(points);
   var path_f = Gen(points_f);
 
-  var points_w = ind.map(function(d,i) { return [x(d),y(me_w[i])]; });
+  var points_b = ind.map(function(d,i) { return [x(d),y(me_b[i])]; });
 
-  var points_f_w = ind.map(function(d,i) { return [x(d),y(mf_w[i])]; });
+  var points_f_b = ind.map(function(d,i) { return [x(d),y(mf_b[i])]; });
 
-  var pathOfLine_w = Gen(points_w);
-  var path_f_w = Gen(points_f_w);
+  var pathOfLine_b = Gen(points_b);
+  var path_f_b = Gen(points_f_b);
 
   d3.select('svg')
     .append('g')
@@ -70,25 +70,25 @@ async function init() {
         .append('g')
         .attr('transform', 'translate(20,20)')
         .selectAll('path')
-        .data(data_male_w)
+        .data(data_male_b)
         .enter()
         .append('path')
         .attr('fill', 'none')
-        .attr('stroke', 'darkgreen')
+        .attr('stroke', 'midnightblue')
         .attr('stroke-width', 1)
-        .attr('d', pathOfLine_w);
+        .attr('d', pathOfLine_b);
 
         d3.select('svg')
           .append('g')
           .attr('transform', 'translate(20,20)')
           .selectAll('path')
-          .data(data_female_w)
+          .data(data_female_b)
           .enter()
           .append('path')
           .attr('fill', 'none')
-          .attr('stroke', 'darkmagenta')
+          .attr('stroke', 'orchid')
           .attr('stroke-width', 1)
-          .attr('d', path_f_w);
+          .attr('d', path_f_b);
 
     d3.select('svg')
       .append('g')
@@ -110,7 +110,7 @@ async function init() {
 }
 </script>
 <div>
-  <a href="s3.html"><button>Hide White Data</button></a>
+  <a href="s3.html"><button>Hide Black Data</button></a>
 </div>
 </body>
 <footer>
