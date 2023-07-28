@@ -38,7 +38,7 @@ async function init() {
   var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
 
   var points_f = ind.map(function(d,i) { return [x(d),y(mf[i])]; });
-  
+
   var pathOfLine = Gen(points);
   var path_f = Gen(points_f);
 
@@ -139,18 +139,18 @@ async function init() {
 
       var svg = d3.select('svg');
 
-      svg.append("circle").attr("cx",440).attr("cy",200).attr("r", 6).style("fill", "steelblue")
-      svg.append("circle").attr("cx",440).attr("cy",230).attr("r", 6).style("fill", "red")
-      svg.append("text").attr("x", 460).attr("y", 200).text("Men").style("font-size", "15px").attr("alignment-baseline","middle")
-      svg.append("text").attr("x", 460).attr("y", 230).text("Women").style("font-size", "15px").attr("alignment-baseline","middle")
-      svg.append("circle").attr("cx",440).attr("cy",260).attr("r", 6).style("fill", "darkgreen")
-      svg.append("circle").attr("cx",440).attr("cy",290).attr("r", 6).style("fill", "darkmagenta")
-      svg.append("text").attr("x", 460).attr("y", 260).text("White Men").style("font-size", "15px").attr("alignment-baseline","middle")
-      svg.append("text").attr("x", 460).attr("y", 290).text("White Women").style("font-size", "15px").attr("alignment-baseline","middle")
-      svg.append("circle").attr("cx",440).attr("cy",320).attr("r", 6).style("fill", "midnightblue")
-      svg.append("circle").attr("cx",440).attr("cy",350).attr("r", 6).style("fill", "orchid")
-      svg.append("text").attr("x", 460).attr("y", 320).text("Black Men").style("font-size", "15px").attr("alignment-baseline","middle")
-      svg.append("text").attr("x", 460).attr("y", 350).text("Black Women").style("font-size", "15px").attr("alignment-baseline","middle")
+      svg.append("circle").attr("cx",440).attr("cy",200).attr("r", 6).style("fill", "steelblue");
+      svg.append("circle").attr("cx",440).attr("cy",230).attr("r", 6).style("fill", "red");
+      svg.append("text").attr("x", 460).attr("y", 200).text("Men").style("font-size", "15px").attr("alignment-baseline","middle");
+      svg.append("text").attr("x", 460).attr("y", 230).text("Women").style("font-size", "15px").attr("alignment-baseline","middle");
+      svg.append("circle").attr("cx",440).attr("cy",260).attr("r", 6).style("fill", "darkgreen");
+      svg.append("circle").attr("cx",440).attr("cy",290).attr("r", 6).style("fill", "darkmagenta");
+      svg.append("text").attr("x", 460).attr("y", 260).text("White Men").style("font-size", "15px").attr("alignment-baseline","middle");
+      svg.append("text").attr("x", 460).attr("y", 290).text("White Women").style("font-size", "15px").attr("alignment-baseline","middle");
+      svg.append("circle").attr("cx",440).attr("cy",320).attr("r", 6).style("fill", "midnightblue");
+      svg.append("circle").attr("cx",440).attr("cy",350).attr("r", 6).style("fill", "orchid");
+      svg.append("text").attr("x", 460).attr("y", 320).text("Black Men").style("font-size", "15px").attr("alignment-baseline","middle");
+      svg.append("text").attr("x", 460).attr("y", 350).text("Black Women").style("font-size", "15px").attr("alignment-baseline","middle");
 
 }
 </script>
