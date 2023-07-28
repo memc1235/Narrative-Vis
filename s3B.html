@@ -20,8 +20,8 @@ async function init() {
   const data_male_b = await d3.csv('B_life_m.csv');
   const data_female_b = await d3.csv('B_life_f.csv');
   //console.log(data_male);
-  var me_b = data_male_w.map(d => +d.ALE);
-  var mf_b = data_female_w.map(d => +d.ALE);
+  var me_b = data_male_b.map(d => +d.ALE);
+  var mf_b = data_female_b.map(d => +d.ALE);
   //console.log(me);
   //const mf = data_female.map(d => +d.ALE);
 
