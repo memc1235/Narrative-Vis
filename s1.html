@@ -3,6 +3,11 @@
 <script src='d3-annotation.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <style> button {font: bold 14px Arial;} </style>
+<style>
+  .annotation-note-title, text.title {
+    font-weight: bold;
+  }
+</style>
 <header>
   <h1>Life Expectancy: White Men and Women</h1>
 </header>
@@ -75,9 +80,9 @@ async function init() {
         {
           note: { label: "1918 Influenza Epidemic with an estimated 50 million deaths worldwide." },
           x: 100,
-          y: 280,
-          dy: 137,
-          dx: 162,
+          y: 300,
+          dy: 20,
+          dx: 100,
           type: d3.annotationCalloutElbow,
           connector: { end: "arrow" },
         },
