@@ -2,6 +2,12 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <style> button {font: bold 14px Arial;} </style>
+<script src='d3-annotation.js'></script>
+<style>
+  .annotation-note-label {
+    font: 12px Arial;
+  }
+</style>
 <header>
   <h1>Life Expectancy: Black Men and Women</h1>
 </header>
@@ -69,6 +75,36 @@ async function init() {
       svg.append("circle").attr("cx",440).attr("cy",230).attr("r", 6).style("fill", "orchid")
       svg.append("text").attr("x", 460).attr("y", 200).text("Men").style("font-size", "15px").attr("alignment-baseline","middle")
       svg.append("text").attr("x", 460).attr("y", 230).text("Women").style("font-size", "15px").attr("alignment-baseline","middle")
+
+      const annotations = [
+        {
+          note: { label: "1918 Influenza Epidemic with an estimated 50 million deaths worldwide." },
+          x: 100,
+          y: 300,
+          dy: 20,
+          dx: 100,
+          type: d3.annotationCalloutElbow,
+          connector: { end: "arrow" },
+        },
+        {
+          note: { label: "Penicillin begins being mass produced." },
+          x: 200,
+          y: 100,
+          dy: 100,
+          dx: 100,
+          type: d3.annotationCalloutElbow,
+          connector: { end: "arrow" },
+        },
+      ];
+
+      const makeAnnotations = d3.annotation()
+        .type(d3.annotationLabel)
+        .annotations(annotations)
+
+      d3.select("svg")
+      .append("g")
+      .attr("class", "annotation-group")
+      .call(makeAnnotations)
 }
 </script>
 </body>

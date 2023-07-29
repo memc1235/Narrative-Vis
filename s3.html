@@ -2,6 +2,12 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <style> button {font: bold 14px Arial;} </style>
+<script src='d3-annotation.js'></script>
+<style>
+  .annotation-note-label {
+    font: 12px Arial;
+  }
+</style>
 <header>
   <h1>Life Expectancy: All Races</h1>
 </header>
@@ -25,7 +31,7 @@ async function init() {
   var points = ind.map(function(d,i) { return [x(d),y(me[i])]; });
 
   var points_f = ind.map(function(d,i) { return [x(d),y(mf[i])]; });
-  
+
   var pathOfLine = Gen(points);
   var path_f = Gen(points_f);
 
