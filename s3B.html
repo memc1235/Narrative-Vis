@@ -117,6 +117,35 @@ async function init() {
       svg.append("text").attr("x", 460).attr("y", 260).text("Black Men").style("font-size", "15px").attr("alignment-baseline","middle")
       svg.append("text").attr("x", 460).attr("y", 290).text("Black Women").style("font-size", "15px").attr("alignment-baseline","middle")
 
+      const annotations = [
+        {
+          note: { label: "1918 Influenza Epidemic with an estimated 50 million deaths worldwide." },
+          x: 100,
+          y: 300,
+          dy: 20,
+          dx: 100,
+          type: d3.annotationCalloutElbow,
+          connector: { end: "arrow" },
+        },
+        {
+          note: { label: "Penicillin begins being mass produced early 1944." },
+          x: 200,
+          y: 175,
+          dy: 75,
+          dx: 100,
+          type: d3.annotationCalloutElbow,
+          connector: { end: "arrow" },
+        },
+      ];
+
+      const makeAnnotations = d3.annotation()
+        .type(d3.annotationLabel)
+        .annotations(annotations)
+
+      d3.select("svg")
+      .append("g")
+      .attr("class", "annotation-group")
+      .call(makeAnnotations)
 }
 </script>
 <div>
