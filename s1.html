@@ -70,6 +70,20 @@ async function init() {
       svg.append("circle").attr("cx",440).attr("cy",230).attr("r", 6).style("fill", "darkmagenta");
       svg.append("text").attr("x", 460).attr("y", 200).text("Men").style("font-size", "15px").attr("alignment-baseline","middle");
       svg.append("text").attr("x", 460).attr("y", 230).text("Women").style("font-size", "15px").attr("alignment-baseline","middle");
+
+      const annotations = [
+        {
+          note: { label: "Hi" },
+          x: 100,
+          y: 100,
+          dy: 137,
+          dx: 162,
+          type: d3.annotationCalloutElbow,
+          connector: { end: "arrow" },
+        },
+      ];
+
+      d3.annotation().annotations(annotations);
 }
 </script>
 </body>
