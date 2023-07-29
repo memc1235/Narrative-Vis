@@ -83,7 +83,14 @@ async function init() {
         },
       ];
 
-      d3.annotation().annotations(annotations);
+      const makeAnnotations = d3.annotation()
+        .type(d3.annotationLabel)
+        .annotations(annotations)
+
+      d3.select("svg")
+      .append("g")
+      .attr("class", "annotation-group")
+      .call(makeAnnotations)
 }
 </script>
 </body>
